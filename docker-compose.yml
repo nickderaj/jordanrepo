@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: jordanrepo-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jordan
+      POSTGRES_PASSWORD: jordan
+      POSTGRES_DB: jordan
+    ports:
+      - "5432:5432"
+    volumes:
+      - jordanrepo-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jordan -d jordan"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  jordanrepo-pgdata:

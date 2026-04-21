@@ -1,0 +1,153 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  width: 100%;
+  max-width: 640px;
+  padding: 2rem 1.5rem;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  font-size: 2rem;
+}
+
+.toolbar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.toolbar .input {
+  flex: 1;
+}
+
+.input {
+  padding: 0.55rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #1a1a1a;
+  color: inherit;
+  font-size: 1rem;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #646cff;
+}
+
+.btn {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btn-primary {
+  background: #646cff;
+  color: white;
+}
+.btn-primary:hover {
+  background: #535bf2;
+}
+
+.btn-secondary {
+  background: #1a1a1a;
+  color: inherit;
+}
+.btn-secondary:hover {
+  border-color: #646cff;
+}
+
+.btn-danger {
+  background: transparent;
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+}
+.btn-danger:hover {
+  background: #ff6b6b;
+  color: white;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+}
+
+.todo-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 1;
+  cursor: pointer;
+}
+
+.todo-toggle {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.todo-done .todo-title {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+.status {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #888;
+  min-height: 1.2em;
+}
+
+.status.error {
+  color: #ff6b6b;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  .input {
+    background: #f9f9f9;
+    border-color: #ddd;
+  }
+  .btn-secondary {
+    background: #f9f9f9;
+  }
+  .todo-item {
+    background: #f9f9f9;
+    border-color: #e3e3e3;
+  }
+}
