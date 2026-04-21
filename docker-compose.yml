@@ -8,11 +8,11 @@ services:
       POSTGRES_PASSWORD: jordan
       POSTGRES_DB: jordan
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - jordanrepo-pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U jordan -d jordan"]
+      test: ['CMD-SHELL', 'pg_isready -U jordan -d jordan']
       interval: 5s
       timeout: 5s
       retries: 10
