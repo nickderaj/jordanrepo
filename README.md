@@ -31,6 +31,24 @@ pnpm dev        # starts web + backend + docs via turbo
 
 Backend bootstraps the `todos` table on startup via `apps/backend/src/schema.sql`.
 
+## Migrations
+
+The backend runs a lightweight "migration" on every startup:
+
+- `apps/backend/src/db.ts` → `runMigrations()` reads `schema.sql` and executes it.
+- `apps/backend/src/schema.sql` → the SQL it runs (`CREATE TABLE IF NOT EXISTS todos (...)`).
+- `apps/backend/src/index.ts` → `await runMigrations()` is called before `app.listen()`.
+
+Every boot re-runs the whole file. Because every statement uses `IF NOT EXISTS`, it's idempotent — safe to run repeatedly and a no-op after the first boot.
+
+**Limitations (by design, for now):**
+
+- No versioning (no `schema_migrations` table tracking applied migrations).
+- No up/down migrations.
+- Changes to `schema.sql` are not diffed against existing databases — you'd need `pnpm db:reset` or hand-written `ALTER TABLE` statements.
+
+**Future:** a proper migration tool (e.g. [drizzle-kit](https://orm.drizzle.team/kit-docs/overview), [node-pg-migrate](https://github.com/salsita/node-pg-migrate), or [Prisma Migrate](https://www.prisma.io/migrate)) will replace this once the schema grows beyond the demo.
+
 ## Database scripts
 
 | Script          | What it does                                   |
